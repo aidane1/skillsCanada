@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Typography</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .view {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .view-body {
+            flex-grow: 1;
+        }
+        .view-logo {
+            display: inline-block;
+            height: 80px;
+            vertical-align: middle;
+        }
+        .view-header-text {
+            display: inline;
+            font-size: 30px;
+            font-weight: 800;
+        }
+        .view-logo img {
+            height: 100%;
+        }
+        .view-header {
+            width: 100%;
+            padding: 50px 30px;
+            background: linear-gradient(to right, #fff, #eee);
+        }
+        .panel-select {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #fff 20%,#eee 80%, #ddd);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        .panel {
+            border: 0;
+            width: 25%;
+            height: 100%;
+            padding: 10px 15px;
+            text-align: center;
+        }
+        .panel-selected {
+            background: linear-gradient(to bottom, #3d310f, #af9d69);
+        }
+        .panel-selected .panel-header {
+            color: white;
+        }
+        .panel-selected .panel-body {
+            color: white;
+        }
+        .panel-header {
+            display: block;
+            font-size: 28px;
+            color: black;
+            text-align: center;
+            font-weight: 700;
+            
+        }
+        .panel-body {
+            width: 100%;
+            letter-spacing: 2px;
+            font-size: 16px;
+            line-height: 25px;
+
+        }
+        @media screen and (max-width: 600px) {
+            .view-logo {
+                height: 60px;
+            }
+        }
+        @media screen and (max-width: 779px) {
+            .view {
+                min-height: 100%;
+                height: initial;
+                display: block;
+            }
+            .view-body {
+                height: 600px;
+            }
+            .panel-select {
+                flex-direction: column;
+            }
+            .panel {
+                width: 100%;
+            }
+            .panel-selected {
+                background: linear-gradient(to left, #3d310f, #af9d69);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="view">
+        <div class="view-header">
+            <div class="view-logo">
+                <img src="images/fakeLogo.png" alt="">
+            </div>
+            <div class="view-header-text">
+                <!-- Testing. Testing. One two three. -->
+            </div>
+        </div>
+        <div class="view-body">
+            <div class="panel-select">
+                <div class="panel panel-selected">
+                    <div class="panel-header">One</div>
+                    <div class="panel-body">
+                        Learn About our shit here. Please. This is where you are now.
+                        but you could be somewhere else.
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">Two</div>
+                    <div class="panel-body">
+                        Learn About our shit here. Please.
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">Three</div>
+                    <div class="panel-body">
+                        Learn About our shit here. Please.
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">Four</div>
+                    <div class="panel-body">
+                        Learn About our shit here. Please.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="view" style = "background-color: red"></div>
+    <div class="view" style = "background-color: blue"></div>
+</body>
+</html>

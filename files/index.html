@@ -1,0 +1,239 @@
+<!-- Solstice canning supplies -->
+<!-- they make mason jars -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>File Test</title>
+    <style>
+        * {
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            width: 100%;
+            height: 100px;
+            background-color: rgb(100, 90, 90);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            width: 100%;
+            height: 100%;
+            padding: 0px 15px;
+
+        }
+        .navbar-title {
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .navbar-item div {
+            width: 120px;
+            text-align: center;
+            padding: 13px 10px 11px 10px;
+            cursor: pointer;
+            display: inline-block;
+            border: 1px solid rgb(50,50,50);
+            border-radius: 1000px;
+            color: white;
+            text-transform: uppercase;
+            background-color: rgb(110, 100, 100);
+        }
+        .navbar-item div:hover {
+            box-shadow: 0px 0px 10px rgb(130, 190, 250);
+        }
+        .body {
+            width: 100%;
+            /* height: 500px; */
+        }
+        .view-1 {
+            background-color: #fafafa;
+        }
+        .view-2 {
+            background-color: white;
+            padding-top: 100px;
+        }
+        .body-header {
+            width: 100%;
+            text-align: center;
+            padding: 30px;
+            color: #333;
+            font-size: 40px;
+            font-weight: 500;
+        }
+        .body-card-holder {
+            width: 100%;
+            padding: 0px 50px;
+            text-align: center;
+        }
+        .card {
+            display: inline-block;
+            width: 250px;
+            height: 300px;
+            background-color: white;
+            box-shadow: 2px 3px 6px rgba(0,0,0,0.24);
+            border-radius: 10px;
+            margin: 10px 50px; 
+            overflow: hidden;
+        }
+        .card-top {
+            width: 100%;
+            height: 200px;
+            padding: 20px;
+            font-size: 20px;
+            letter-spacing: 1.2px;
+            overflow: hidden;
+        }
+        .card-bottom {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            padding-top: 30px;
+            font-size: 14px;
+            text-align: left;
+            letter-spacing: 1.3px;
+            font-style: italic;
+            background-color: #eee;
+        }
+        .title-fold {
+            width: 100%;
+            overflow: auto;
+        }
+        .title-fold-info {
+            width: 80%;
+            margin: auto;
+            padding: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            line-height: 30px;
+        }
+        .title-fold-info-header {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+            margin-bottom: 20px;
+        }
+        .title-fold-image {
+            float: right;
+            position: relative;
+            top: -60px;
+        }
+        .footer {
+            width: 100%;
+            height: 60px;
+            background-color: rgb(47, 35, 34);
+        }
+    </style>
+</head>
+<body>
+    <div class="header header-compact" id = "header">
+        <table class="navbar">
+            <tr>
+                <td colspan = "3" class = "navbar-title">
+                    <span style = "color: rgb(230, 230, 190)">Solstice</span> <span style = "color: rgb(210,152, 156)">Canning</span> &trade;
+                </td>
+                <td class = "navbar-item">
+                    <div>
+                        Items
+                    </div>
+                </td>
+                <td class = "navbar-item">
+                    <div>
+                        History
+                    </div>
+                </td>
+                <td class = "navbar-item">
+                    <div>
+                        Locations
+                    </div>
+                </td>
+                <td class = "navbar-item">
+                    <div>
+                        Contact
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="body view-2" style = "position: relative;">
+        <div class="title-fold">
+            <div class="title-fold-info">
+                <div class="title-fold-image">
+                    <img src = "/images/masonJar.png" />
+                </div>
+                <div class="title-fold-info-header">
+                    The hand crafted quality you won't find anywhere else
+                </div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis sollicitudin scelerisque.
+                 Mauris consequat enim vel metus sollicitudin condimentum. Nam posuere urna lectus, eget 
+                 feugiat metus vehicula ut. Nam ultrices, orci in imperdiet eleifend, purus mi egestas metus,
+                  nec feugiat lorem ipsum id nisi. Aliquam venenatis, est et scelerisque consequat, nibh lorem 
+                  feugiat libero, in feugiat nisl libero vitae justo. Suspendisse congue tempus arcu in gravida. 
+                  Aliquam vestibulum non lectus non lobortis. Mauris tincidunt, dui sed tristique
+                 volutpat, dui tortor mollis dui, in consectetur nisi erat in leo. Sed at ligula purus.
+                
+            </div>
+            
+        </div>
+    </div>
+    <div class="body view-1">
+        <div class="body-header">
+            Family owned. Locally opperated
+        </div>
+        <div class="body-card-holder">
+            <div class="card">
+                <div class="card-top">
+                    High quality jars will never break or lose their seal. Perfection from
+                    start to finish. 
+                </div>
+                <div class="card-bottom">
+                    Our family recipe borosilicate glass is custom inealled to perfection 
+                    for every jar
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    High end rings available in any size, shape, and colour
+                </div>
+                <div class="card-bottom">
+                    Our family recipe borosilicate glass is custom inealled to perfection
+                </div>
+            </div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+<script>
+    window.onscroll = function() {
+        let header = document.getElementById("header");
+        header.style.height = (40 - window.pageYOffset/2 > 0 ? 100 - window.pageYOffset/2 : 60).toString() + "px";
+    };
+
+</script>
+</html>
+
+<!-- key words: 
+
+quality
+custom
+hand-made
+fast -->
+
+
