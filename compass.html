@@ -22,6 +22,28 @@
         text-align: center;
         /* background-color: rgb(250,250,250); */
       }
+      .viewTitle {
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+        text-align: center;
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: 300;
+        color: rgba(0,0,0,0.8);
+        margin-top: 20px;
+      }
+      .viewInfo {
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 20px;
+        letter-spacing: 1.1px;
+        color: rgba(0,0,0,0.7);
+      }
       .logo {
         width: 50%;
         display: inline-block;
@@ -37,10 +59,11 @@
         color: rgba(0,0,0,0.8);
       }
       .logo img {
-        width: 100%;
+        width: 95%;
       }
       .mainImage {
         width: 40%;
+        min-width: 300px;
         display: inline-block;
         vertical-align: middle;
       }
@@ -60,6 +83,24 @@
         top: 0;
         left: 0;
         -webkit-tap-highlight-color: transparent;
+      }
+      .headerImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.2s linear;
+      }
+      .headerImageDisplayed {
+        opacity: 0;
+      }
+      .headerImage img {
+        max-width: 250px;
+        width: 50%;
+        position: relative;
+        top: 16px;
       }
       .body {
         height: calc(100% - 62px);
@@ -179,9 +220,11 @@
         top: 15px;
         overflow: hidden;
         display: none;
+        
       }
       .hamburgerMenuIcon {
         display: none;
+        opacity: 0.5;
       }
       .extended {
         max-height: 62px;
@@ -196,6 +239,9 @@
         /* background-color: red; */
       }
       @media screen and (max-width: 790px) {
+        .headerImageDisplayed {
+          opacity: 1;
+        }
         .header {
           max-height: 46px;
           height: 220px;
@@ -230,6 +276,48 @@
           margin: auto;
           min-width: 300px;
         }
+        .card {
+          width: 200px;
+          height: 300px;
+          background-color: white;
+          box-shadow: 2px 3px 3px rgba(0,0,0,0.2), 0px 0px 6px rgba(0,0,0,0.1), -1px -1px 4px rgba(0,0,0,0.1);
+          border-radius: 10px;
+          margin: 10px;
+          display: inline-block;
+          overflow: hidden;
+          cursor: pointer;
+          z-index: -1;
+          position: relative;
+        }
+        .cardImg {
+          width: 100%;
+          height: 50%;
+          padding-top: 10px;
+        }
+        .cardImg img {
+          height: 100%;
+        }
+        .cardText {
+          height: 50%;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+        }
+        .cardTitle {
+          font-size: 18px;
+          font-weight: 900;
+          font-style: italic;
+        }
+        .cardBody {
+          margin-top: 10px;
+          text-align: left;
+          font-size: 12px;
+          line-height: 25px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
     </style>
   </head>
@@ -237,6 +325,9 @@
     <div class="header" id = "header" onclick = "extendMenu()">
       <div class="hamburgerMenuIcon">
           <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="32px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg>
+      </div>
+      <div class="headerImage" id = "headerImage">
+          <img src = "images/compassLogo.png">
       </div>
       <div class="hamburgerMenu">
         <div class="hamburgerItem">Products</div>
@@ -270,6 +361,25 @@
         </div>
         <div class="mainImage">
           <img src = "images/watch1.png">
+        </div>
+      </div>
+      <div class="view">
+        <div class="viewTitle">
+          Our Watches
+        </div>
+        <div class="viewInfo">
+          <p>
+              Our watches are so fuckin good that it will blow your god damn mind that you haven't been using them
+              all your life up to this point. You will laugh at any dumb motherfucker who chooses not to wear our
+              watches because you know fundamentally they are not happy with the events that have transpired in their life.
+          </p>
+          <p>
+              God had to pick between our watches and france, and he picked our watches. Each one of our watches induvidually is
+              better than the entirety of the country of france.
+          </p>
+        </div>
+        <div class="mainImage">
+          <img src = "images/watch10.png">
         </div>
       </div>
       <div class="view">
@@ -419,6 +529,7 @@
   <script>
     document.getElementById("body").addEventListener("scroll", function(event) {
       let header = document.getElementById("header");
+      let headerImage = document.getElementById("headerImage");
       if (document.getElementById("body").scrollTop == 0) {
         if (header.classList.contains("extended")) {
 
@@ -427,6 +538,11 @@
         }
       } else {
         document.getElementById("header").classList.add("headerShadow");
+      }
+      if (document.getElementById("body").scrollTop >= 50) {
+        headerImage.classList.add("headerImageDisplayed");
+      } else {
+        headerImage.classList.remove("headerImageDisplayed");
       }
     });
     function extendMenu() {
