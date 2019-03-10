@@ -530,7 +530,7 @@
     document.getElementById("body").addEventListener("scroll", function(event) {
       let header = document.getElementById("header");
       let headerImage = document.getElementById("headerImage");
-      if (document.getElementById("body").scrollTop == 0) {
+      if (document.getElementById("body").scrollTop <= 0) {
         if (header.classList.contains("extended")) {
 
         } else {
