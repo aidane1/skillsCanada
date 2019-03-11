@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compass | Products</title>
+    <link rel = "prefetch" href = "/products">
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        background: linear-gradient(to bottom, rgb(250,250,250), rgb(255,255,255));
+        overflow: hidden;
+      }
+      .view {
+        width: 100%;
+        text-align: center;
+        /* background-color: rgb(250,250,250); */
+      }
+      .viewTitle {
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+        text-align: center;
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: 300;
+        color: rgba(0,0,0,0.8);
+        margin-top: 20px;
+      }
+      .viewInfo {
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 20px;
+        letter-spacing: 1.1px;
+        color: rgba(0,0,0,0.7);
+      }
+      .logo {
+        width: 50%;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .logoText {
+        width: 100%;
+        letter-spacing: 1.7px;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 25px;
+        padding-top: 10px;
+        color: rgba(0,0,0,0.8);
+      }
+      .logo img {
+        width: 95%;
+      }
+      .mainImage {
+        width: 40%;
+        min-width: 300px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .mainImage img {
+        width: 100%;
+      }
+      .header {
+        width: 100%;
+        text-align: justify;
+        padding: 0px 50px;
+        transition: box-shadow 0.15s linear;
+        font-size: 0px;
+        line-height: 0px;
+        background: linear-gradient(to bottom, rgb(240,240,240), rgb(250,250,250));
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        left: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .header a {
+        font-style: none;
+        text-decoration: none;
+        color: #333;
+        text-shadow: 1px 1px rgba(0,0,0,0.1);
+      }
+      .headerItem:hover a {
+        color: rgba(40, 50, 120, 0.4);
+        text-shadow: 1px 1px rgba(0,0,0,0.1);
+      }
+      .headerImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s linear;
+        z-index: 2;
+      }
+      .headerImageDisplayed {
+        opacity: 0;
+      }
+      .headerImage img {
+        max-width: 250px;
+        width: 50%;
+        position: relative;
+        top: 16px;
+      }
+      .body {
+        height: calc(100% - 62px);
+        overflow: auto;
+        z-index: 2;
+        position: fixed;
+        top: 63px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .headerShadow {
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+      }
+      .headerItem {
+        display: inline-block;
+        font-size: 22px;
+        line-height: 22px;
+        padding: 20px 40px;
+        cursor: pointer;
+      }
+      .headerItem:hover {
+        color: rgba(40, 50, 120, 0.4);
+        text-shadow: 1px 1px rgba(0,0,0,0.1);
+      }
+      .viewHeader {
+        font-size: 45px;
+        display: none;
+      }
+      .cardBox {
+        width: 100%;
+        
+      }
+      .card {
+        width: 250px;
+        height: 400px;
+        background-color: white;
+        box-shadow: 2px 3px 3px rgba(0,0,0,0.2), 0px 0px 6px rgba(0,0,0,0.1), -1px -1px 4px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        margin: 10px;
+        display: inline-block;
+        overflow: hidden;
+        cursor: pointer;
+        z-index: -1;
+        position: relative;
+      }
+      .cardImg {
+        width: 100%;
+        height: 50%;
+        padding-top: 10px;
+      }
+      .cardImg img {
+        height: 100%;
+      }
+      .cardText {
+        height: 50%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+      .cardTitle {
+        font-size: 20px;
+        font-weight: 900;
+        font-style: italic;
+      }
+      .cardBody {
+        margin-top: 10px;
+        text-align: left;
+        font-size: 14px;
+        line-height: 25px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .bodyImage {
+        display: inline-block;
+        margin: 30px 40px;
+        padding: 20px;
+        overflow: auto;
+      }
+      .bodyImagePosition {
+        width: 100%;
+        color: #aaa;
+        font-style: italic;
+        font-weight: 700;
+        margin-top: 10px;
+      }
+      .bodyImageCircle  {
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
+        overflow: hidden;
+        position: relative;
+        margin: auto;
+      }
+      .bodyImage img {
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+      }
+      .bodyImageText {
+        font-size: 16px;
+        font-weight: 700;
+        color: #00a9e0;
+      }
+      .bodyImageTitle {
+        text-align: center;
+        font-size: 15px;
+        color: #444;
+        font-weight: 700;
+        margin: 10px;
+      }
+      .hamburgerMenu {
+        width: 100%;
+        position: relative;
+        top: 15px;
+        overflow: hidden;
+        display: none;
+        
+      }
+      .hamburgerMenuIcon {
+        display: none;
+        opacity: 0.5;
+        z-index: 3;
+      }
+      .extended {
+        max-height: 62px;
+      }
+      .hamburgerItem {
+        width: 100%;
+        line-height: 22px;
+        font-size: 18px;
+        padding: 10px 20px;
+        color: #333;
+        text-shadow: 1px 1px rgba(0,0,0,0.1);
+        /* background-color: red; */
+      }
+      @media screen and (max-width: 790px) {
+        .headerImageDisplayed {
+          opacity: 1;
+        }
+        .header {
+          max-height: 46px;
+          height: 256px;
+          overflow: hidden;
+          padding: 0;
+          transition: max-height 0.3s cubic-bezier(.19,.5,.49,.99);
+        }
+        .extended {
+          max-height: 256px;
+          box-sizing: border-box;
+        }
+        .body {
+          height: calc(100% - 46px);
+          padding-top: 10px;
+          top: 47px;
+          z-index: 0;
+        }
+        .hamburgerMenuIcon {
+          display: block;
+          position: relative;
+          top: 7px;
+          left: 20px;
+        }
+        .hamburgerMenu {
+          display: block;
+        }
+        .headerItem {
+          display: none;
+        }
+        .logo {
+          display: block;
+          margin: auto;
+          min-width: 300px;
+        }
+        .card {
+          width: 200px;
+          height: 300px;
+          background-color: white;
+          box-shadow: 2px 3px 3px rgba(0,0,0,0.2), 0px 0px 6px rgba(0,0,0,0.1), -1px -1px 4px rgba(0,0,0,0.1);
+          border-radius: 10px;
+          margin: 10px;
+          display: inline-block;
+          overflow: hidden;
+          cursor: pointer;
+          z-index: -1;
+          position: relative;
+        }
+        .cardImg {
+          width: 100%;
+          height: 50%;
+          padding-top: 10px;
+        }
+        .cardImg img {
+          height: 100%;
+        }
+        .cardText {
+          height: 50%;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+        }
+        .cardTitle {
+          font-size: 18px;
+          font-weight: 900;
+          font-style: italic;
+        }
+        .cardBody {
+          margin-top: 10px;
+          text-align: left;
+          font-size: 12px;
+          line-height: 25px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header" id = "header">
+      <div class="hamburgerMenuIcon" onclick = "extendMenu()">
+          <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="32px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg>
+      </div>
+      <div class="headerImage" id = "headerImage">
+          <img src = "images/compassLogo.png">
+      </div>
+      <div class="hamburgerMenu">
+            <div class="hamburgerItem"><a href = "/">Home</a></div>
+            <div class="hamburgerItem"><a href = "/products">Products</a></div>
+            <div class="hamburgerItem"><a href = "/experts">Experts</a></div>
+            <div class="hamburgerItem"><a href = "/history">Our History</a></div>
+            <div class="hamburgerItem"><a href = "/purchase">Purchase</a></div>
+            </div>
+            <div class="headerItem">
+            <a href = "/">Home</a>
+            </div>
+            <div class="headerItem">
+            <a href = "/products">Products</a>
+            </div>
+            <div class="headerItem">
+            <a href="/experts">Experts</a>
+            </div>
+            <div class="headerItem">
+            <a href="/history">Our History</a>
+            </div>
+            <div class="headerItem">
+            <a href="/purchase">Purchase</a>
+        </div>  
+        <div style = "width: 100%; height: 0px; visibility: hidden; display: inline-block"></div>
+    </div>
+    <div class="body" id = "body">
+      <div class="view">
+        <div class="logo">
+          <img src = "images/compassLogo.png">
+          <!-- <div class="logoText"> -->
+            <!-- Making hand crafted high quality watches since 1812 -->
+            <!-- Producing high quality hand crafted watches since 1812 -->
+            <!-- Producing high quality watches since we fucking yeeted the white house -->
+          <!-- </div> -->
+        </div>
+        <div class="mainImage">
+          <img src = "images/watch10.png">
+        </div>
+      </div>
+      <div class="view">
+        <div class="viewTitle">
+          Products
+        </div>
+        <div class="viewInfo">
+          <p>
+              When we make our watches, we make them with heart. So much so, in fact, that we take one out of a french persons
+              chest for use in every specimen. We take pride in our ability to effortlessly and unquestioningly fuck up french people,
+              any time it is necessary.
+          </p>
+          <p>
+              Additionally, we make sure that our watch has one multiple wars so as to ensure it will never cross french borders.
+          </p>
+        </div>
+        <!-- <div class="mainImage">
+          <img src = "images/watch10.png">
+        </div> -->
+      </div>
+      <div class="view">
+        <div class="viewHeader">
+          Products
+        </div>
+        <div class="cardBox">
+            <div class="card">
+                <div class="cardImg">
+                    <img src = "images/watch7.png">
+                </div>
+                <div class="cardText">
+                    <div class="cardTitle">
+                    The Australian
+                    </div>
+                    <div class="cardBody">
+                    Hit it until it shuts up
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a magna a metus eleifend 
+                    dignissim sit amet et risus. Nunc suscipit feugiat neque, nec sollicitudin augue porta in.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardImg">
+                <img src = "images/watch8.png">
+                </div>
+                <div class="cardText">
+                <div class="cardTitle">
+                    The Scizor
+                </div>
+                <div class="cardBody">
+                    Second place is okay.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a magna a metus eleifend 
+                    dignissim sit amet et risus. Nunc suscipit feugiat neque, nec sollicitudin augue porta in.
+                </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardImg">
+                <img src = "images/watch9.png">
+                </div>
+                <div class="cardText">
+                <div class="cardTitle">
+                    The Muskrat
+                </div>
+                <div class="cardBody">
+                    Light colours scare you.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a magna a metus eleifend 
+                    dignissim sit amet et risus. Nunc suscipit feugiat neque, nec sollicitudin augue porta in.
+                </div>
+                </div>
+            </div>
+          <div class="card">
+            <div class="cardImg">
+              <img src = "images/watch2.png">
+            </div>
+            <div class="cardText">
+              <div class="cardTitle">
+                The Galigar G8
+              </div>
+              <div class="cardBody">
+                Your dad is probably an investment banker.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a magna a metus eleifend 
+                dignissim sit amet et risus. Nunc suscipit feugiat neque, nec sollicitudin augue porta in.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="cardImg">
+              <img src = "images/watch3.png">
+            </div>
+            <div class="cardText">
+              <div class="cardTitle">
+                The Moscovian
+              </div>
+              <div class="cardBody">
+                You don't see why you need a fancy watch, but you're gonna get one anyway.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a magna a metus eleifend 
+                dignissim sit amet et risus. Nunc suscipit feugiat neque, nec sollicitudin augue porta in.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="cardImg">
+              <img src = "images/watch4.png">
+            </div>
+            <div class="cardText">
+              <div class="cardTitle">
+                The Leatherback
+              </div>
+              <div class="cardBody">
+                You probably aced that 8th grade quiz on catcher in the rye.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a magna a metus eleifend 
+                dignissim sit amet et risus. Nunc suscipit feugiat neque, nec sollicitudin augue porta in.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="cardImg">
+              <img src = "images/watch1.png">
+            </div>
+            <div class="cardText">
+              <div class="cardTitle">
+                The Glimmerer
+              </div>
+              <div class="cardBody">
+                you WANT to be noticed. you NEED to be noticed.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a magna a metus eleifend 
+                dignissim sit amet et risus. Nunc suscipit feugiat neque, nec sollicitudin augue porta in.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="cardImg">
+              <img src = "images/watch5.png">
+            </div>
+            <div class="cardText">
+              <div class="cardTitle">
+                The Arabian
+              </div>
+              <div class="cardBody">
+                You wanna be allowed to hate minorities without being accused of being racist.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a magna a metus eleifend 
+                dignissim sit amet et risus. Nunc suscipit feugiat neque, nec sollicitudin augue porta in.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="cardImg">
+              <img src = "images/watch10.png">
+            </div>
+            <div class="cardText">
+              <div class="cardTitle">
+                The Samurott
+              </div>
+              <div class="cardBody">
+                History buff on a budget.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a magna a metus eleifend 
+                dignissim sit amet et risus. Nunc suscipit feugiat neque, nec sollicitudin augue porta in.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="cardImg">
+              <img src = "images/watch6.png">
+            </div>
+            <div class="cardText">
+              <div class="cardTitle">
+                The Toxicologian
+              </div>
+              <div class="cardBody">
+                None of your shoes are laced because you never learned to tie them.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a magna a metus eleifend 
+                dignissim sit amet et risus. Nunc suscipit feugiat neque, nec sollicitudin augue porta in.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.getElementById("body").addEventListener("scroll", function(event) {
+      let header = document.getElementById("header");
+      let headerImage = document.getElementById("headerImage");
+      if (document.getElementById("body").scrollTop <= 0) {
+        if (header.classList.contains("extended")) {
+
+        } else {
+          document.getElementById("header").classList.remove("headerShadow");
+        }
+      } else {
+        document.getElementById("header").classList.add("headerShadow");
+      }
+      if (document.getElementById("body").scrollTop >= 50) {
+        headerImage.classList.add("headerImageDisplayed");
+      } else {
+        headerImage.classList.remove("headerImageDisplayed");
+      }
+    });
+    function extendMenu() {
+      let header = document.getElementById("header");
+      if (window.innerWidth <= 790) {
+        if (header.classList.contains("extended")) {
+          header.classList.remove("extended");
+          if (document.getElementById("body").scrollTop == 0) {
+            document.getElementById("header").classList.remove("headerShadow");
+          }
+        } else {
+          header.classList.add("extended");
+          document.getElementById("header").classList.add("headerShadow");
+        }
+      }
+    }
+  </script>
+</html>
+
+<!-- -products
+-our compass experts
+-story
+-purchase -->

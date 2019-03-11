@@ -118,6 +118,18 @@ let app = new SimpleServer(8888);
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/compass.html");
 });
-app.get("/typography", function(req, res) {
-    res.sendFile(__dirname + "/files/typography.html");
+app.get("/products", async function(req, res) {
+    res.sendFile(__dirname + "/compassProducts.html");
+});
+app.get("/products/product", async function(req, res) {
+    res.sendFile(__dirname + "/compassWatch.html");
+});
+app.get("/experts", async function(req, res) {
+    res.sendFile(__dirname + "/compassExperts.html");
+});
+app.get("/history", async function(req, res) {
+    res.sendFile(__dirname + "/compassHistory.html");
+});
+app.get("/purchase", function(req, res) {
+    res.sendFile(__dirname = "/compassPurchase.html");
 });
