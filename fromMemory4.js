@@ -131,5 +131,5 @@ app.get("/history", async function(req, res) {
     res.sendFile(__dirname + "/compassHistory.html");
 });
 app.get("/purchase", function(req, res) {
-    res.sendFile(__dirname = "/compassPurchase.html");
+    res.sendFile(__dirname = "/compass.html");
 });
